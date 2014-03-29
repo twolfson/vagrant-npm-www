@@ -6,6 +6,8 @@ This was created to isolate dependency management (e.g. [elasticsearch][], [Java
 
 [Vagrant]: http://www.vagrantup.com/
 [`npm-www`]: https://github.com/npm/npm-www
+[elasticsearch]: http://www.elasticsearch.org/
+[Java]: http://www.java.com/
 
 ![Screenshot of `vagrant-npm-www`](docs/screenshot.png)
 

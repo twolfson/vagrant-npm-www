@@ -45,7 +45,7 @@ SCRIPT
   cd /vagrant
   if ! test -d npm-www &> /dev/null; then
     git clone https://github.com/npm/npm-www.git
-    # TODO: Perform `npm install` and `npm start`
+    # TODO: Perform `npm install` and `npm run dev`
   fi
 SCRIPT
   config.vm.provision "shell", inline: $clone_repository
@@ -53,7 +53,6 @@ SCRIPT
   # Notes from before
   # ---------------------
   # ELASTIC SEARCH
-  # TODO: This should be in /tmp or /usr/local/lib
   # http://stackoverflow.com/questions/10268583/how-to-automate-download-and-installation-of-java-jdk-on-linux
   # wget http://download.oracle.com/otn-pub/java/jdk/7/jre-7-linux-x64.tar.gz --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"
   # tar xvf jre-7-linux-x64.tar.gz
@@ -78,6 +77,6 @@ SCRIPT
   # sudo apt-get install redis-server -y
 
   # Start the machine
-  # TODO; We need to run `couchdb` under `sudo` due to `/etc/` paths but we shouldn't
+  # TODO: We need to run `couchdb` under `sudo` due to `/etc/` paths but we shouldn't
   # sudo npm run dev
 end

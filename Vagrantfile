@@ -90,12 +90,12 @@ SCRIPT
 
   # Notify the user of next steps
   $notify_user = <<SCRIPT
-  echo "\`npm-www\` is ready to go"
-  echo "To start the app, inside of \`vagrant ssh\`, run the following:"
+  echo "\\`npm-www\\` is ready to go"
+  echo "To start the app, inside of \\`vagrant ssh\\`, run the following:"
   echo "cd /vagrant/npm-www"
   echo "npm run dev"
   echo ""
-  echo "On your host machine, you can access \`npm-www\` at:"
+  echo "On your host machine, you can access \\`npm-www\\` at:"
   echo "https://127.0.0.1:15443/"
 SCRIPT
   config.vm.provision "shell", inline: $notify_user

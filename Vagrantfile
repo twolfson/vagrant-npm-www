@@ -84,6 +84,8 @@ SCRIPT
   cd /vagrant
   if ! test -d npm-www &> /dev/null; then
     git clone https://github.com/npm/npm-www.git
+    cd npm-www
+    npm install
   fi
 SCRIPT
   config.vm.provision "shell", inline: $clone_repository

@@ -57,7 +57,7 @@ SCRIPT
   # wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.tar.gz
   # tar xvzf elasticsearch-0.90.7.tar.gz
   # sudo cp elasticsearch-0.90.7/ /usr/local/lib/ -r
-  # sudo ln -s /usr/local/lib/elasticsearch-0.90.7/bin/elasticsearch /usr/bin/elasticsearch
+  # PATH="$PATH:/usr/local/lib/elasticsearch-0.90.7/bin"
 
   # COUCH DB
   # https://launchpad.net/~couchdb/+archive/stable

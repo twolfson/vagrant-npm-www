@@ -38,7 +38,7 @@ SCRIPT
   $clone_repository = <<SCRIPT
   cd /vagrant
   if ! test -d npm-www &> /dev/null; then
-    git clone npm-www
+    git clone https://github.com/npm/npm-www.git
   fi
 SCRIPT
   config.vm.provision "shell", inline: $clone_repository

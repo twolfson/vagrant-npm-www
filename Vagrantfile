@@ -48,13 +48,14 @@ SCRIPT
     sudo apt-get install openjdk-7-jre-headless -y
   fi
 
-  if ! which elasticsearch &> /dev/null; then
-    cd /tmp
-    wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.0.deb
-    sudo dpkg -i elasticsearch-1.1.0.deb
-    # TODO: Is this necessary?
-    # sudo service elasticsearch start
-  fi
+  # TODO: Figure out how to add to /usr/local/bin
+  # if ! which elasticsearch &> /dev/null; then
+  #   cd /tmp
+  #   wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.0.deb
+  #   sudo dpkg -i elasticsearch-1.1.0.deb
+  #   # TODO: Is this necessary?
+  #   # sudo service elasticsearch start
+  # fi
 SCRIPT
   config.vm.provision "shell", inline: $install_elasticsearch
 

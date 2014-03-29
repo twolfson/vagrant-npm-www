@@ -1,4 +1,4 @@
-# vagrant-npm-www [![Build status](https://travis-ci.org/twolfson/vagrant-npm-www.png?branch=master)](https://travis-ci.org/twolfson/vagrant-npm-www)
+# vagrant-npm-www
 
 [Vagrant][] setup for [`npm-www`][]
 

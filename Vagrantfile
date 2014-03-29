@@ -6,6 +6,12 @@ Vagrant.configure("2") do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.vm.network "forwarded_port", guest: 15443, host: 15443
 
+  # Add in some memory improvements (be nice to ourselves)
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 2048
+    v.cpus = 2
+  end
+
   # Update apt-get once
   $update_apt_get = <<SCRIPT
   if ! test -f .updated_apt_get; then

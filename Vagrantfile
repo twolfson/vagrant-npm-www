@@ -42,20 +42,20 @@ SCRIPT
   config.vm.provision "shell", inline: $install_git
 
   # Install dependency on elasticsearch (and Java)
-  # https://gist.github.com/wingdspur/2026107
   $install_elasticsearch = <<SCRIPT
   if ! which java &> /dev/null; then
     sudo apt-get install openjdk-7-jre-headless -y
   fi
 
-  # TODO: Figure out how to add to /usr/local/bin
-  # if ! which elasticsearch &> /dev/null; then
-  #   cd /tmp
-  #   wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.0.deb
-  #   sudo dpkg -i elasticsearch-1.1.0.deb
-  #   # TODO: Is this necessary?
-  #   # sudo service elasticsearch start
-  # fi
+  if ! which elasticsearch &> /dev/null; then
+    cd /tmp
+    wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.tar.gz
+    tar xvzf elasticsearch-0.90.7.tar.gz
+    sudo cp elasticsearch-0.90.7/ /usr/local/lib/ -r
+    # TODO: Figure out a better way to do get `elasticsearch` in the PATH
+    # DEV: This intentionally overwrites *all* of /etc/environment. Super bad.
+    echo "PATH=\\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/lib/elasticsearch-0.90.7/bin\\"" > /etc/environment
+  fi
 SCRIPT
   config.vm.provision "shell", inline: $install_elasticsearch
 

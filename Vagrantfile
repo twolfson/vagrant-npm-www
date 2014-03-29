@@ -70,4 +70,7 @@ SCRIPT
 
   # REDIS
   # sudo apt-get install redis-server -y
+
+  # Start the machine
+  # sudo npm run dev
 end

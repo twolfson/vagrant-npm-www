@@ -72,5 +72,6 @@ SCRIPT
   # sudo apt-get install redis-server -y
 
   # Start the machine
+  # TODO; We need to run `couchdb` under `sudo` due to `/etc/` paths but we shouldn't
   # sudo npm run dev
 end

@@ -7,22 +7,42 @@ This was created to isolate dependency management (e.g. [elasticsearch][], [Java
 [Vagrant]: http://www.vagrantup.com/
 [`npm-www`]: https://github.com/npm/npm-www
 
-## Getting Started
-Install the module with: `npm install vagrant-npm-www`
+// TODO: Screenshot please
 
-```javascript
-var vagrant_npm_www = require('vagrant-npm-www');
-vagrant_npm_www.awesome(); // "awesome"
+## Getting Started
+Install [Vagrant][] as instructed by http://www.vagrantup.com/
+
+Clone this repository via `git`:
+
+```bash
+git clone https://github.com/twolfson/vagrant-npm-www
 ```
 
-## Documentation
-_(Coming soon)_
+Launch the [Vagrant][] instance:
 
-## Examples
-_(Coming soon)_
+```bash
+vagrant up
+# Bringing machine 'default' up with 'virtualbox' provider...
+```
+
+When the machine is done provisioning, you will be prompted with next steps:
+
+```bash
+`npm-www` is ready to go
+To start the app, inside of `vagrant ssh`, run the following:
+cd /vagrant/npm-www
+npm run dev
+
+On your host machine, you can access `npm-www` at:
+https://127.0.0.1:15443/
+```
+
+When `npm run dev` stops outputting CouchDB information (e.g. `[PUT]`), you should be able to access the website:
+
+https://127.0.0.1:15443/
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
+In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Donating
 Support this project and [others by twolfson][gittip] via [gittip][].

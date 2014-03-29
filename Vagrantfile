@@ -55,10 +55,16 @@ SCRIPT
   # wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.tar.gz
   # tar xvzf elasticsearch-0.90.7.tar.gz
   # echo "PATH=$PATH:$PWD/elasticsearch-0.90.7/bin" >> /etc/environment
+  # PATH="$PATH:/tmp/elasticsearch-0.90.7/bin"
 
   # COUCH DB
-  # TODO: Pray this is a recent version
-  # sudo apt-get install couchdb -y
+  # https://launchpad.net/~couchdb/+archive/stable
+  # sudo apt-get install python-software-properties -y
+  # sudo add-apt-repository ppa:couchdb/stable -y
+  # sudo apt-get update -y
+  # sudo apt-get remove couchdb couchdb-bin couchdb-common -yf
+  # sudo apt-get install -V couchdb -y
+  # sudo start couchdb
 
   # REDIS
   # sudo apt-get install redis-server -y

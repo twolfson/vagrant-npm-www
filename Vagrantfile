@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
 SCRIPT
   config.vm.provision "shell", inline: $update_apt_get
 
+  # Install latest stable version of `node` and `npm`
   # https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager#ubuntu-mint-elementary-os
   $install_node = <<SCRIPT
   if ! which node &> /dev/null; then
@@ -32,7 +33,7 @@ SCRIPT
 SCRIPT
   config.vm.provision "shell", inline: $install_node
 
-  # Install test dependency on `git`
+  # Install dependency on `git`
   $install_git = <<SCRIPT
   if ! which git &> /dev/null; then
     sudo apt-get install git -y
@@ -40,7 +41,24 @@ SCRIPT
 SCRIPT
   config.vm.provision "shell", inline: $install_git
 
-  # Clone `npm-www repository
+  # Install dependency on elasticsearch (and Java)
+  # https://gist.github.com/wingdspur/2026107
+  $install_elasticsearch = <<SCRIPT
+  if ! which java &> /dev/null; then
+    sudo apt-get install openjdk-7-jre-headless -y
+  fi
+
+  if ! which elasticsearch &> /dev/null; then
+    cd /tmp
+    wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.0.deb
+    sudo dpkg -i elasticsearch-1.1.0.deb
+    # TODO: Is this necessary?
+    # sudo service elasticsearch start
+  fi
+SCRIPT
+  config.vm.provision "shell", inline: $install_elasticsearch
+
+  # Clone `npm-www` repository
   $clone_repository = <<SCRIPT
   cd /vagrant
   if ! test -d npm-www &> /dev/null; then
@@ -49,20 +67,6 @@ SCRIPT
   fi
 SCRIPT
   config.vm.provision "shell", inline: $clone_repository
-
-  # Notes from before
-  # ---------------------
-  # ELASTIC SEARCH
-  # http://stackoverflow.com/questions/10268583/how-to-automate-download-and-installation-of-java-jdk-on-linux
-  # wget http://download.oracle.com/otn-pub/java/jdk/7/jre-7-linux-x64.tar.gz --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"
-  # tar xvf jre-7-linux-x64.tar.gz
-  # sudo cp jre1.7.0/ /usr/local/lib/ -r
-  # sudo ln -s /usr/local/lib/jre1.7.0/bin/java /usr/bin/java
-
-  # wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.tar.gz
-  # tar xvzf elasticsearch-0.90.7.tar.gz
-  # sudo cp elasticsearch-0.90.7/ /usr/local/lib/ -r
-  # PATH="$PATH:/usr/local/lib/elasticsearch-0.90.7/bin"
 
   # COUCH DB
   # https://launchpad.net/~couchdb/+archive/stable

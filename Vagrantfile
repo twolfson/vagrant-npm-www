@@ -58,29 +58,41 @@ SCRIPT
 SCRIPT
   config.vm.provision "shell", inline: $install_elasticsearch
 
+  # Install dependency on CouchDB
+  # https://launchpad.net/~couchdb/+archive/stable
+  $install_couchdb = <<SCRIPT
+  if ! which couchdb &> /dev/null; then
+    sudo apt-get install python-software-properties -y
+    sudo add-apt-repository ppa:couchdb/stable -y
+    sudo apt-get update
+    sudo apt-get install couchdb -y
+  fi
+SCRIPT
+  config.vm.provision "shell", inline: $install_couchdb
+
+  # Install dependency on Redis
+  $install_redis = <<SCRIPT
+  if ! which redis-server &> /dev/null; then
+    sudo apt-get install redis-server -y
+  fi
+SCRIPT
+  config.vm.provision "shell", inline: $install_redis
+
   # Clone `npm-www` repository
   $clone_repository = <<SCRIPT
   cd /vagrant
   if ! test -d npm-www &> /dev/null; then
     git clone https://github.com/npm/npm-www.git
-    # TODO: Perform `npm install` and `npm run dev`
   fi
 SCRIPT
   config.vm.provision "shell", inline: $clone_repository
 
-  # COUCH DB
-  # https://launchpad.net/~couchdb/+archive/stable
-  # sudo apt-get install python-software-properties -y
-  # sudo add-apt-repository ppa:couchdb/stable -y
-  # sudo apt-get update -y
-  # sudo apt-get remove couchdb couchdb-bin couchdb-common -yf
-  # sudo apt-get install -V couchdb -y
-  # sudo start couchdb
-
-  # REDIS
-  # sudo apt-get install redis-server -y
-
-  # Start the machine
-  # TODO: We need to run `couchdb` under `sudo` due to `/etc/` paths but we shouldn't
-  # sudo npm run dev
+  # Notify the user of next steps
+  $notify_user = <<SCRIPT
+  echo "`npm-www` is ready to go"
+  echo "To start the app, inside of `vagrant ssh`, run the following:"
+  echo "cd /vagrant/npm-www"
+  echo "npm run dev"
+SCRIPT
+  config.vm.provision "shell", inline: $notify_user
 end

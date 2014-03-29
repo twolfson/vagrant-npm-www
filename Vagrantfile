@@ -90,8 +90,8 @@ SCRIPT
 
   # Notify the user of next steps
   $notify_user = <<SCRIPT
-  echo "`npm-www` is ready to go"
-  echo "To start the app, inside of `vagrant ssh`, run the following:"
+  echo "\`npm-www\` is ready to go"
+  echo "To start the app, inside of \`vagrant ssh\`, run the following:"
   echo "cd /vagrant/npm-www"
   echo "npm run dev"
 SCRIPT

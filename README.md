@@ -37,7 +37,13 @@ On your host machine, you can access `npm-www` at:
 https://127.0.0.1:15443/
 ```
 
-When `npm run dev` stops outputting CouchDB information (e.g. `[PUT]`), you should be able to access the website:
+The website will be immediately available but there will be no packages as replication occurs. Replication is over when you no longer see messages like:
+
+```
+[info] [<0.856.0>] 127.0.0.1 - - PUT /registry/gulp-bower-source?new_edits=false&rev=4-be904485b7d5b1f4e9b1b9d41d46a101 201
+```
+
+The website will be available on the host computer at:
 
 https://127.0.0.1:15443/
 

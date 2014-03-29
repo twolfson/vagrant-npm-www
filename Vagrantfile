@@ -33,8 +33,7 @@ SCRIPT
 SCRIPT
   config.vm.provision "shell", inline: $install_git
 
-  # Clone repository
-  # TODO: Should this be part of provisioning or not?
+  # Clone `npm-www repository
   $clone_repository = <<SCRIPT
   cd /vagrant
   if ! test -d npm-www &> /dev/null; then
@@ -47,7 +46,8 @@ SCRIPT
   # ---------------------
   # ELASTIC SEARCH
   # TODO: This should be in /tmp or /usr/local/lib
-  # wget http://download.oracle.com/otn-pub/java/jdk/7/jre-7-linux-x64.tar.gz --no-cookies --header "Cookie: s_cc=true; s_nr=1385349830727; gpw_e24=http%3A%2F%2Fwww.oracle.com%2Ftechnetwork%2Fjava%2Fjavase%2Fdownloads%2Fjava-se-jre-7-download-432155.html; s_sq=%5B%5BB%5D%5D"
+  # http://stackoverflow.com/questions/10268583/how-to-automate-download-and-installation-of-java-jdk-on-linux
+  # wget http://download.oracle.com/otn-pub/java/jdk/7/jre-7-linux-x64.tar.gz --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"
   # tar xvf jre-7-linux-x64.tar.gz
   # sudo ln -s $PWD/jre1.7.0/bin/java /usr/bin/java
 

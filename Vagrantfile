@@ -51,12 +51,13 @@ SCRIPT
   # http://stackoverflow.com/questions/10268583/how-to-automate-download-and-installation-of-java-jdk-on-linux
   # wget http://download.oracle.com/otn-pub/java/jdk/7/jre-7-linux-x64.tar.gz --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"
   # tar xvf jre-7-linux-x64.tar.gz
-  # sudo ln -s "$PWD/jre1.7.0/bin/java" /usr/bin/java
+  # sudo cp jre1.7.0/ /usr/local/lib/ -r
+  # sudo ln -s /usr/local/lib/jre1.7.0/bin/java /usr/bin/java
 
   # wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.tar.gz
   # tar xvzf elasticsearch-0.90.7.tar.gz
-  # echo "PATH=$PATH:$PWD/elasticsearch-0.90.7/bin" >> /etc/environment
-  # PATH="$PATH:/tmp/elasticsearch-0.90.7/bin"
+  # sudo cp elasticsearch-0.90.7/ /usr/local/lib/ -r
+  # sudo ln -s /usr/local/lib/elasticsearch-0.90.7/bin/elasticsearch /usr/bin/elasticsearch
 
   # COUCH DB
   # https://launchpad.net/~couchdb/+archive/stable

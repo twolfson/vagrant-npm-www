@@ -38,6 +38,7 @@ SCRIPT
   cd /vagrant
   if ! test -d npm-www &> /dev/null; then
     git clone https://github.com/npm/npm-www.git
+    # TODO: Perform `npm install` and `npm start`
   fi
 SCRIPT
   config.vm.provision "shell", inline: $clone_repository
@@ -49,7 +50,7 @@ SCRIPT
   # http://stackoverflow.com/questions/10268583/how-to-automate-download-and-installation-of-java-jdk-on-linux
   # wget http://download.oracle.com/otn-pub/java/jdk/7/jre-7-linux-x64.tar.gz --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"
   # tar xvf jre-7-linux-x64.tar.gz
-  # sudo ln -s $PWD/jre1.7.0/bin/java /usr/bin/java
+  # sudo ln -s "$PWD/jre1.7.0/bin/java" /usr/bin/java
 
   # wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.tar.gz
   # tar xvzf elasticsearch-0.90.7.tar.gz

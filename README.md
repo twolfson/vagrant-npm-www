@@ -31,7 +31,7 @@ When the machine is done provisioning, you will be prompted with next steps:
 `npm-www` is ready to go
 To start the app, inside of `vagrant ssh`, run the following:
 cd /vagrant/npm-www
-npm run dev
+sudo npm run dev
 
 On your host machine, you can access `npm-www` at:
 https://127.0.0.1:15443/
